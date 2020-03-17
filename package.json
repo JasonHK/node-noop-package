@@ -23,7 +23,8 @@
     "clean": "npx run-s -ln clean:*",
     "clean:build": "npx rimraf -- ./lib ./dist"
   },
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
+  "browser": "./dist/noop-package.min.js",
   "dependencies": {
     "es5-ext": "0.10.53"
   },
