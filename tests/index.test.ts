@@ -2,6 +2,8 @@
 
 import noop, { INoop } from "src/index";
 
+import { PROPERTY_KEYS } from "./_property-keys";
+
 describe(
     "noop",
     () =>
@@ -125,17 +127,181 @@ describe(
                             () =>
                             {
                                 // `Object.getOwnPropertyDescriptor()`
-                                const descriptorObject = Object.getOwnPropertyDescriptor(noop, "");
-                                expect(descriptorObject).toBeUndefined();
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    const descriptor = Object.getOwnPropertyDescriptor(noop, key);
+                                    expect(descriptor).toBeUndefined();
+                                }
 
                                 // `Reflect.getOwnPropertyDescriptor()`
-                                const descriptorReflect = Reflect.getOwnPropertyDescriptor(noop, "");
-                                expect(descriptorReflect).toBeUndefined();
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    const descriptor = Reflect.getOwnPropertyDescriptor(noop, key);
+                                    expect(descriptor).toBeUndefined();
+                                }
                             });
                     });
 
                 describe(
-                    "apply(target, thisArg[, args])",
+                    "defineProperty(target, key, descriptor)",
+                    () =>
+                    {
+                        test(
+                            "Case: Returns `true`",
+                            () =>
+                            {
+                                // `Object.defineProperty()`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(Object.defineProperty(noop, key, { value: key }))
+                                        .toBe(noop);
+                                }
+
+                                // `Reflect.defineProperty()`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(Reflect.defineProperty(noop, key, { value: key }))
+                                        .toBeTrue();
+                                }
+                            });
+                    });
+
+                describe(
+                    "deleteProperty(target, key)",
+                    () =>
+                    {
+                        test(
+                            "Case: Returns `true`",
+                            () =>
+                            {
+                                // Property deletion: `delete proxy.key` and `delete proxy[key]`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(delete noop[key as string | number]).toBeTrue();
+                                }
+
+                                // `Reflect.deleteProperty()`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(Reflect.deleteProperty(noop, key)).toBeTrue();
+                                }
+                            });
+                    });
+
+                describe(
+                    "has(target, key)",
+                    () =>
+                    {
+                        test(
+                            "Case: Returns `true`",
+                            () =>
+                            {
+                                // Property query: `key in proxy`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(key in noop).toBeTrue();
+                                }
+
+                                // Inherited property query: `key in Object.create(proxy)`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(key in Object.create(noop)).toBeTrue();
+                                }
+
+                                // `with` check: `with (proxy) { (key); }`
+                                // Not tested due to `with` statement was forbidden in strict mode.
+
+                                // `Reflect.has()`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(Reflect.has(noop, key)).toBeTrue();
+                                }
+                            });
+                    });
+
+                describe(
+                    "get(target, key, receiver)",
+                    () =>
+                    {
+                        test(
+                            "Case: Returns the proxy itself",
+                            () =>
+                            {
+                                // Property access: `proxy.key` and `proxy[key]`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(noop[key as string | number]).toBe(noop);
+                                }
+
+                                // Inherited property access: `Object.create(proxy).key` and `Object.create(proxy)[key]`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(Object.create(noop)[key as string | number]).toBe(noop);
+                                }
+
+                                // `Reflect.get()`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(Reflect.get(noop, key)).toBe(noop);
+                                }
+                            });
+                    });
+
+                describe(
+                    "set(target, property, value, receiver)",
+                    () =>
+                    {
+                        test(
+                            "Case: Returns `true`",
+                            () =>
+                            {
+                                // Property assignment: `proxy.key = value` and `proxy[key] = value`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(noop[key as string | number] = key as unknown as INoop).toBe(key);
+                                }
+
+                                // Inherited property assignment: `Object.create(proxy).key = value` and
+                                // `Object.create(proxy)[key] = value`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(Object.create(noop)[key as string | number] = key).toBe(key);
+                                }
+
+                                // `Reflect.set()`
+                                for (const key of PROPERTY_KEYS)
+                                {
+                                    expect(Reflect.set(noop, key, key)).toBeTrue();
+                                }
+                            });
+                    });
+
+                describe(
+                    "ownKeys(target)",
+                    () =>
+                    {
+                        test(
+                            "Case: Returns an `Array` of keys",
+                            () =>
+                            {
+                                // `Object.getOwnPropertyNames()`
+                                expect(Object.getOwnPropertyNames(noop))
+                                    .toIncludeAllMembers(["length", "name", "prototype"]);
+
+                                // `Object.getOwnPropertySymbols()`
+                                expect(Object.getOwnPropertySymbols(noop)).toBeEmpty();
+
+                                // `Object.keys()`
+                                expect(Object.keys(noop)).toBeEmpty();
+
+                                // `Reflect.ownKeys()`
+                                expect(Reflect.ownKeys(noop))
+                                    .toIncludeAllMembers(["length", "name", "prototype"]);
+                            });
+                    });
+
+                describe(
+                    "apply(target, thisArg, args)",
                     () =>
                     {
                         test(
@@ -161,7 +327,7 @@ describe(
                     });
 
                 describe(
-                    "construct(target, args[, newTarget])",
+                    "construct(target, args, newTarget)",
                     () =>
                     {
                         test(
