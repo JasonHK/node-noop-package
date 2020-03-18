@@ -17,10 +17,8 @@
             "jest",
             "jest-extended",
         ],
-        "allowJs": true,
     },
     "include": [
         "../tests/**/*.ts",
-        "../tests/**/*.js",
     ],
 }
