@@ -14,44 +14,24 @@ describe(
                     "getPrototypeOf(target)",
                     () =>
                     {
-                        describe(
+                        test(
                             "Case: Returns the proxy itself",
                             () =>
                             {
-                                test(
-                                    "- `Object.getPrototypeOf()`",
-                                    () =>
-                                    {
-                                        expect(Object.getPrototypeOf(noop)).toBe(noop);
-                                    });
+                                // `Object.getPrototypeOf()`
+                                expect(Object.getPrototypeOf(noop)).toBe(noop);
 
-                                test(
-                                    "- `Reflect.getPrototypeOf()`",
-                                    () =>
-                                    {
-                                        expect(Reflect.getPrototypeOf(noop)).toBe(noop);
-                                    });
+                                // `Reflect.getPrototypeOf()`
+                                expect(Reflect.getPrototypeOf(noop)).toBe(noop);
 
-                                test(
-                                    "- `__proto__`",
-                                    () =>
-                                    {
-                                        expect(noop.__proto__).toBe(noop);
-                                    });
+                                // `__proto__`
+                                expect(noop.__proto__).toBe(noop);
 
-                                test(
-                                    "- `Object.prototype.isPrototypeOf()`",
-                                    () =>
-                                    {
-                                        expect(Object.prototype.isPrototypeOf.call(noop, noop)).toBe(true);
-                                    });
+                                // `Object.prototype.isPrototypeOf()`
+                                expect(Object.prototype.isPrototypeOf.call(noop, noop)).toBe(true);
 
-                                test(
-                                    "- `instanceof`",
-                                    () =>
-                                    {
-                                        expect(noop instanceof noop).toBe(true);
-                                    });
+                                // `instanceof`
+                                expect(noop instanceof noop).toBe(true);
                             });
                     });
 
@@ -59,32 +39,24 @@ describe(
                     "setPrototypeOf(target, prototype)",
                     () =>
                     {
-                        describe(
+                        test(
                             "Case: Returns `true`",
                             () =>
                             {
-                                test(
-                                    "- `Object.setPrototypeOf()`",
+                                // `Object.setPrototypeOf()`
+                                expect(
                                     () =>
                                     {
-                                        expect(
-                                            () =>
-                                            {
-                                                expect(Object.setPrototypeOf(noop, null)).toBe(noop);
-                                                expect(Object.setPrototypeOf(noop, {})).toBe(noop);
-                                                expect(Object.setPrototypeOf(noop, noop)).toBe(noop);
-                                            })
-                                            .not.toThrow();
-                                    });
+                                        expect(Object.setPrototypeOf(noop, null)).toBe(noop);
+                                        expect(Object.setPrototypeOf(noop, {})).toBe(noop);
+                                        expect(Object.setPrototypeOf(noop, noop)).toBe(noop);
+                                    })
+                                    .not.toThrow();
 
-                                test(
-                                    "- `Reflect.setPrototypeOf()`",
-                                    () =>
-                                    {
-                                        expect(Reflect.setPrototypeOf(noop, null)).toBe(true);
-                                        expect(Reflect.setPrototypeOf(noop, {})).toBe(true);
-                                        expect(Reflect.setPrototypeOf(noop, noop)).toBe(true);
-                                    });
+                                // `Reflect.setPrototypeOf()`
+                                expect(Reflect.setPrototypeOf(noop, null)).toBe(true);
+                                expect(Reflect.setPrototypeOf(noop, {})).toBe(true);
+                                expect(Reflect.setPrototypeOf(noop, noop)).toBe(true);
                             });
                     });
 
@@ -92,70 +64,67 @@ describe(
                     "isExtensible(target)",
                     () =>
                     {
-
-                        describe(
+                        test(
                             "Case: Returns `true`",
                             () =>
                             {
-                                test(
-                                    "- `Object.isExtensible()`",
-                                    () =>
-                                    {
-                                        expect(Object.isExtensible(noop)).toBe(true);
-                                    });
+                                // `Object.isExtensible()`
+                                expect(Object.isExtensible(noop)).toBe(true);
 
-                                test(
+                                // `Reflect.isExtensible()`
+                                expect(Reflect.isExtensible(noop)).toBe(true);
+                            });
+                    });
+
+                describe(
+                    "preventExtensions(target)",
+                    () =>
+                    {
+                        test(
+                            "Case: Returns `false`",
+                            () =>
+                            {
+                                // `Object.preventExtensions()`
+                                expect(() => { Object.preventExtensions(noop); })
+                                    .toThrow(TypeError);
+
+                                // `Reflect.preventExtensions()`
+                                expect(Reflect.preventExtensions(noop)).toBe(false);
+                            });
+                    });
+
+                        test(
                                     "- `Reflect.isExtensible()`",
-                                    () =>
-                                    {
+                            () =>
+                            {
                                         expect(Reflect.isExtensible(noop)).toBe(true);
                                     });
                             });
                     });
-                    
+
                 describe(
                     "apply(target, thisArg[, args])",
                     () =>
                     {
-                        describe(
+                        test(
                             "Case: Returns the proxy itself",
                             () =>
                             {
-                                test(
-                                    "- `proxy(...args)`",
-                                    () =>
-                                    {
-                                        expect(noop()).toBe(noop);
-                                    });
+                                // `proxy(...args)`
+                                expect(noop()).toBe(noop);
                         
-                                test(
-                                    "- `Function.prototype.apply()`",
-                                    () =>
-                                    {
-                                        expect(Function.prototype.apply.call(noop)).toBe(noop);
-                                    });
+                                // `Function.prototype.apply()`
+                                expect(Function.prototype.apply.call(noop)).toBe(noop);
                         
-                                test(
-                                    "- `Function.prototype.bind()`",
-                                    () =>
-                                    {
-                                        const binded = Function.prototype.bind.call(noop) as INoop;
-                                        expect(binded(noop)).toBe(noop);
-                                    });
+                                // `Function.prototype.bind()`
+                                const binded = Function.prototype.bind.call(noop) as INoop;
+                                expect(binded(noop)).toBe(noop);
                         
-                                test(
-                                    "- `Function.prototype.call()`",
-                                    () =>
-                                    {
-                                        expect(Function.prototype.call.call(noop)).toBe(noop);
-                                    });
+                                // `Function.prototype.call()`
+                                expect(Function.prototype.call.call(noop)).toBe(noop);
                 
-                                test(
-                                    "- `Reflect.apply()`",
-                                    () =>
-                                    {
-                                        expect(Reflect.apply(noop as unknown as Function, undefined, [])).toBe(noop);
-                                    });
+                                // `Reflect.apply()`
+                                expect(Reflect.apply(noop as unknown as Function, undefined, [])).toBe(noop);
                             });
                     });
 
@@ -163,23 +132,15 @@ describe(
                     "construct(target, args[, newTarget])",
                     () =>
                     {
-                        describe(
+                        test(
                             "Case: Returns the proxy itself",
                             () =>
                             {
-                                test(
-                                    "- `new Proxy(...args)`",
-                                    () =>
-                                    {
-                                        expect(new noop()).toBe(noop);
-                                    });
+                                // `new Proxy(...args)`
+                                expect(new noop()).toBe(noop);
 
-                                test(
-                                    "- `Reflect.construct()`",
-                                    () =>
-                                    {
-                                        expect(Reflect.construct(noop as unknown as Function, [])).toBe(noop);
-                                    });
+                                // `Reflect.construct()`
+                                expect(Reflect.construct(noop as unknown as Function, [])).toBe(noop);
                             });
                     });
 
