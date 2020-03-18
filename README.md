@@ -1,1 +1,4 @@
-# node-noop-package
+node-noop-package
+=================
+
+A package that does absolutely nothing.
