@@ -12,8 +12,13 @@
 # Test Suites
 /tests
 
-# Coverage Report
-/coverage
+#===================================================================================================
+# Node.js
+#===================================================================================================
 
-# Tarball Package
-/*.tgz
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# Output of 'npm pack'
+*.tgz
