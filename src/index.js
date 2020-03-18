@@ -6,7 +6,7 @@ const { isPackageSupported } = require("./utilities/is-package-supported");
 
 if (!isPackageSupported())
 {
-    throw new Error();
+    throw new Error("This package was not supported in the current environment.");
 }
 
 const noop = new Proxy(
