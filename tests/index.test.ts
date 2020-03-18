@@ -3,52 +3,86 @@
 import noop, { INoop } from "src/index";
 
 describe(
-    "The trap for function call",
+    "noop",
     () =>
     {
         describe(
-            "Case: Returns itself",
+            "Proxy Handlers",
             () =>
             {
-                test(
-                    "- `proxy(...args)`",
+                describe(
+                    "apply(target, thisArg[, args])",
                     () =>
                     {
-                        expect(noop()).toBe(noop);
+                        describe(
+                            "Case: Returns the proxy itself",
+                            () =>
+                            {
+                                test(
+                                    "- `proxy(...args)`",
+                                    () =>
+                                    {
+                                        expect(noop()).toBe(noop);
+                                    });
+                        
+                                test(
+                                    "- `Function.prototype.apply()`",
+                                    () =>
+                                    {
+                                        expect(noop.apply()).toBe(noop);
+                                        expect(Function.prototype.apply.call(noop)).toBe(noop);
+                                    });
+                        
+                                test(
+                                    "- `Function.prototype.bind()`",
+                                    () =>
+                                    {
+                                        const binded1 = noop.bind();
+                                        expect(binded1()).toBe(noop);
+                
+                                        const binded2 = Function.prototype.bind.call(noop) as INoop;
+                                        expect(binded2(noop)).toBe(noop);
+                                    });
+                        
+                                test(
+                                    "- `Function.prototype.call()`",
+                                    () =>
+                                    {
+                                        expect(noop.call()).toBe(noop);
+                                        expect(Function.prototype.call.call(noop)).toBe(noop);
+                                    });
+                
+                                test(
+                                    "- `Reflect.apply()`",
+                                    () =>
+                                    {
+                                        expect(Reflect.apply(noop as unknown as Function, undefined, [])).toBe(noop);
+                                    });
+                            });
                     });
-        
-                test(
-                    "- `Function.prototype.apply()`",
-                    () =>
-                    {
-                        expect(noop.apply()).toBe(noop);
-                        expect(Function.prototype.apply.call(noop)).toBe(noop);
-                    });
-        
-                test(
-                    "- `Function.prototype.bind()`",
-                    () =>
-                    {
-                        const binded1 = noop.bind();
-                        expect(binded1()).toBe(noop);
 
-                        const binded2 = Function.prototype.bind.call(noop) as INoop;
-                        expect(binded2(noop)).toBe(noop);
-                    });
-        
-                test(
-                    "- `Function.prototype.call()`",
+                describe(
+                    "construct(target, args[, newTarget])",
                     () =>
                     {
-                        expect(noop.call()).toBe(noop);
-                        expect(Function.prototype.call.call(noop)).toBe(noop);
-                    });
+                        describe(
+                            "Case: Returns the proxy itself",
+                            () =>
+                            {
+                                test(
+                                    "- `new Proxy(...args)`",
+                                    () =>
+                                    {
+                                        expect(new noop()).toBe(noop);
+                                    });
 
-                test(
-                    "- `Reflect.apply()`",
-                    () =>
-                    {
-                        expect(Reflect.apply(noop as unknown as Function, undefined, [])).toBe(noop);
+                                test(
+                                    "- `Reflect.construct()`",
+                                    () =>
+                                    {
+                                        expect(Reflect.construct(noop as unknown as Function, [])).toBe(noop);
+                                    });
+                            });
                     });
             });
     });
