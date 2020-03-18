@@ -14,3 +14,6 @@
 
 # Coverage Report
 /coverage
+
+# Tarball Package
+/*.tgz
