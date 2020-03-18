@@ -22,7 +22,7 @@ $ yarn add @jasonhk/noop-package
 ## License
 
 Copyright &copy; 2020 [Jason Kwok][author-website].<br>
-Licensed under the [MIT License][github-license].
+Licensed under [the Unlicense][github-license].
 
 [author-website]: https://jasonhk.net/ "Author's Website"
 
