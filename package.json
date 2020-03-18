@@ -1,7 +1,7 @@
 {
   "name": "@jasonhk/noop-package",
   "description": "A package that does absolutely nothing.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "Unlicense",
   "author": "Jason Kwok <github@jasonhk.email> (https://jasonhk.net/)",
   "homepage": "https://github.com/JasonHK/node-noop-package#readme",
