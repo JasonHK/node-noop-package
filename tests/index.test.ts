@@ -93,12 +93,44 @@ describe(
                             });
                     });
 
+                describe(
+                    "getOwnPropertyDescriptor(target, key)",
+                    () =>
+                    {
                         test(
-                                    "- `Reflect.isExtensible()`",
+                            "Case: Returns the modified descriptor",
                             () =>
                             {
-                                        expect(Reflect.isExtensible(noop)).toBe(true);
-                                    });
+                                // `Object.getOwnPropertyDescriptor()`
+                                for (const key of Reflect.ownKeys(noop))
+                                {
+                                    const descriptor = Object.getOwnPropertyDescriptor(noop, key);
+
+                                    expect(descriptor).toBeObject()
+                                    expect(descriptor.value).toBe(noop);
+                                }
+
+                                // `Reflect.getOwnPropertyDescriptor()`
+                                for (const key of Reflect.ownKeys(noop))
+                                {
+                                    const descriptor = Reflect.getOwnPropertyDescriptor(noop, key);
+
+                                    expect(descriptor).toBeObject();
+                                    expect(descriptor.value).toBe(noop);
+                                }
+                            });
+                        
+                        test(
+                            "Case: Returns `undefined`",
+                            () =>
+                            {
+                                // `Object.getOwnPropertyDescriptor()`
+                                const descriptorObject = Object.getOwnPropertyDescriptor(noop, "");
+                                expect(descriptorObject).toBeUndefined();
+
+                                // `Reflect.getOwnPropertyDescriptor()`
+                                const descriptorReflect = Reflect.getOwnPropertyDescriptor(noop, "");
+                                expect(descriptorReflect).toBeUndefined();
                             });
                     });
 
