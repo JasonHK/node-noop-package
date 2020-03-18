@@ -28,10 +28,10 @@ describe(
                                 expect(noop.__proto__).toBe(noop);
 
                                 // `Object.prototype.isPrototypeOf()`
-                                expect(Object.prototype.isPrototypeOf.call(noop, noop)).toBe(true);
+                                expect(Object.prototype.isPrototypeOf.call(noop, noop)).toBeTrue();
 
                                 // `instanceof`
-                                expect(noop instanceof noop).toBe(true);
+                                expect(noop instanceof noop).toBeTrue();
                             });
                     });
 
@@ -54,9 +54,9 @@ describe(
                                     .not.toThrow();
 
                                 // `Reflect.setPrototypeOf()`
-                                expect(Reflect.setPrototypeOf(noop, null)).toBe(true);
-                                expect(Reflect.setPrototypeOf(noop, {})).toBe(true);
-                                expect(Reflect.setPrototypeOf(noop, noop)).toBe(true);
+                                expect(Reflect.setPrototypeOf(noop, null)).toBeTrue();
+                                expect(Reflect.setPrototypeOf(noop, {})).toBeTrue();
+                                expect(Reflect.setPrototypeOf(noop, noop)).toBeTrue();
                             });
                     });
 
@@ -69,10 +69,10 @@ describe(
                             () =>
                             {
                                 // `Object.isExtensible()`
-                                expect(Object.isExtensible(noop)).toBe(true);
+                                expect(Object.isExtensible(noop)).toBeTrue();
 
                                 // `Reflect.isExtensible()`
-                                expect(Reflect.isExtensible(noop)).toBe(true);
+                                expect(Reflect.isExtensible(noop)).toBeTrue();
                             });
                     });
 
@@ -89,7 +89,7 @@ describe(
                                     .toThrow(TypeError);
 
                                 // `Reflect.preventExtensions()`
-                                expect(Reflect.preventExtensions(noop)).toBe(false);
+                                expect(Reflect.preventExtensions(noop)).toBeFalse();
                             });
                     });
 

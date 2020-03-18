@@ -8,6 +8,9 @@
     "modulePaths": [
         "<rootDir>"
     ],
+    "setupFilesAfterEnv": [
+        "jest-extended"
+    ],
     "transform": {
         "^.+\\.ts$": "ts-jest"
     },
