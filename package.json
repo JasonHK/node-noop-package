@@ -21,7 +21,7 @@
     "build": "npx npm-run-all -ln build:configs --parallel build:src",
     "build:configs": "npx tsc --project configs/tsconfig.build.configs.json",
     "build:src": "(npx path-exists configs/rollup.config.js || npm run build:configs) && npx rollup --config configs/rollup.config.js",
-    "release": "standard-version",
+    "release": "npm run prepublishOnly && standard-version",
     "prepublishOnly": "npx run-s test build",
     "postpublish": "npm run clean:build:src",
     "clean": "npx run-s -ln clean:*",
