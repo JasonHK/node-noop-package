@@ -26,7 +26,7 @@ Licensed under [the Unlicense][github-license].
 
 [author-website]: https://jasonhk.net/ "Author's Website"
 
-[github-license]: https://github.com/JasonHK/node-noop-package/LICENSE "Package's License File"
+[github-license]: https://github.com/JasonHK/node-noop-package/blob/master/LICENSE "Package's License File"
 
 [npm-package]: https://www.npmjs.com/package/@jasonhk/noop-package "Package's NPM Registry Entry"
 [npm-download-badge]: https://img.shields.io/npm/dt/@jasonhk/noop-package?style=flat-square "Package's Total Downloads"
