@@ -2,8 +2,15 @@
 # Repository
 #===================================================================================================
 
-# Configurations Directory
+# Configurations
 /configs
+/.travis.yml
 
-# Source Directory
+# Source Code
 /src
+
+# Test Suites
+/tests
+
+# Coverage Report
+/coverage
