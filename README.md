@@ -4,6 +4,7 @@
 A package that does absolutely nothing.
 
 [![npm-version-badge]][npm-package] [![npm-download-badge]][npm-package] [![npm-license-badge]][github-license] [![travis-build-badge]][travis-build] [![codecov-coverage-badge]][codecov-coverage]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJasonHK%2Fnode-noop-package.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FJasonHK%2Fnode-noop-package?ref=badge_shield)
 
 ## Motivation
 
@@ -44,3 +45,6 @@ Licensed under [the Unlicense][github-license].
 
 [codecov-coverage]: https://codecov.io/gh/JasonHK/node-noop-package "Repository's Codecov Page"
 [codecov-coverage-badge]: https://img.shields.io/codecov/c/github/JasonHK/node-noop-package?style=flat-square "Repository's Code Coverage"
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJasonHK%2Fnode-noop-package.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FJasonHK%2Fnode-noop-package?ref=badge_large)
