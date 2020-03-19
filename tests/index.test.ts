@@ -46,14 +46,9 @@ describe(
                             () =>
                             {
                                 // `Object.setPrototypeOf()`
-                                expect(
-                                    () =>
-                                    {
-                                        expect(Object.setPrototypeOf(noop, null)).toBe(noop);
-                                        expect(Object.setPrototypeOf(noop, {})).toBe(noop);
-                                        expect(Object.setPrototypeOf(noop, noop)).toBe(noop);
-                                    })
-                                    .not.toThrow();
+                                expect(Object.setPrototypeOf(noop, null)).toBe(noop);
+                                expect(Object.setPrototypeOf(noop, {})).toBe(noop);
+                                expect(Object.setPrototypeOf(noop, noop)).toBe(noop);
 
                                 // `Reflect.setPrototypeOf()`
                                 expect(Reflect.setPrototypeOf(noop, null)).toBeTrue();
