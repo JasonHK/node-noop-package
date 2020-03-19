@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/JasonHK/node-noop-package/compare/v0.0.2...v0.0.3) (2020-03-19)
+
+
+### Bug Fixes
+
+* fixed incorrect license link in readme ([125ec9d](https://github.com/JasonHK/node-noop-package/commit/125ec9df5ad96e36e05337cd5ae080abd9e4f23d))
+
 ### [0.0.2](https://github.com/JasonHK/node-noop-package/compare/v0.0.1...v0.0.2) (2020-03-18)
 
 
