@@ -5,6 +5,12 @@ A package that does absolutely nothing.
 
 [![npm-version-badge]][npm-package] [![npm-download-badge]][npm-package] [![npm-license-badge]][github-license] [![travis-build-badge]][travis-build] [![codecov-coverage-badge]][codecov-coverage]
 
+## Motivation
+
+In some circumstances, package bundlers might fail to remove modules that were not used. This package intended to be used as a placeholder module in those situations.
+
+You can configure the bundler to use this package to replace the modules that were not able to remove. This way you can reduce the size of the package bundle.
+
 ## Installation
 
 ### NPM
