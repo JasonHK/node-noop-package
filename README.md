@@ -3,7 +3,7 @@
 
 A package that does absolutely nothing.
 
-[![npm-version-badge]][npm-package] [![npm-download-badge]][npm-package] [![npm-license-badge]][github-license] [![travis-build-badge]][travis-build] [![codecov-coverage-badge]][codecov-coverage]
+[![npm-version-badge]][npm-package] [![npm-download-badge]][npm-package] [![npm-license-badge]][github-license] [![travis-build-badge]][travis-build] [![codeclimate-maintainability-badge]][codeclimate] [![codecov-coverage-badge]][codecov-coverage]
 
 ## Motivation
 
@@ -41,6 +41,9 @@ Licensed under [the Unlicense][github-license].
 
 [travis-build]: https://travis-ci.com/JasonHK/node-noop-package "Repository's Travis CI Page"
 [travis-build-badge]: https://img.shields.io/travis/com/JasonHK/node-noop-package?style=flat-square "Repository's Build Status"
+
+[codeclimate]: https://codeclimate.com/github/JasonHK/node-noop-package "Repository's Code Climate Page"
+[codeclimate-maintainability-badge]: https://img.shields.io/codeclimate/maintainability/JasonHK/node-noop-package?style=flat-square "Repository's Code Maintainability"
 
 [codecov-coverage]: https://codecov.io/gh/JasonHK/node-noop-package "Repository's Codecov Page"
 [codecov-coverage-badge]: https://img.shields.io/codecov/c/github/JasonHK/node-noop-package?style=flat-square "Repository's Code Coverage"
