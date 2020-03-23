@@ -53,5 +53,5 @@ Licensed under [the Unlicense][github-license].
 [codecov-coverage]: https://codecov.io/gh/JasonHK/node-noop-package "Repository's Codecov Page"
 [codecov-coverage-badge]: https://img.shields.io/codecov/c/github/JasonHK/node-noop-package?style=flat-square "Repository's Code Coverage"
 
-[fossa]: https://app.fossa.com/projects/git%2Bgithub.com%2FJasonHK%2Fnode-noop-package/refs/branch/master/790626ce4fe615e134fc47e0427f571f51f54075 "Repository's FOSSA Page"
+[fossa]: https://app.fossa.com/projects/git%2Bgithub.com%2FJasonHK%2Fnode-noop-package "Repository's FOSSA Page"
 [fossa-status-badge]: https://app.fossa.com/api/projects/git%2Bgithub.com%2FJasonHK%2Fnode-noop-package.svg?type=large "Repository's License Check Status"
