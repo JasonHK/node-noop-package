@@ -3,7 +3,7 @@
 
 A package that does absolutely nothing.
 
-[![npm-version-badge]][npm-package] [![npm-download-badge]][npm-package] [![npm-license-badge]][github-license] [![travis-build-badge]][travis-build] [![codeclimate-maintainability-badge]][codeclimate] [![codecov-coverage-badge]][codecov-coverage]
+[![npm-version-badge]][npm-package] [![npm-download-badge]][npm-package] [![npm-license-badge]][github-license] [![libraries.io-dependencies-badge]][libraries.io] [![travis-build-badge]][travis-build] [![codeclimate-maintainability-badge]][codeclimate] [![codecov-coverage-badge]][codecov-coverage]
 
 ## Motivation
 
@@ -38,6 +38,9 @@ Licensed under [the Unlicense][github-license].
 [npm-download-badge]: https://img.shields.io/npm/dt/@jasonhk/noop-package?style=flat-square "Package's Total Downloads"
 [npm-license-badge]: https://img.shields.io/npm/l/@jasonhk/noop-package?style=flat-square "Package's License"
 [npm-version-badge]: https://img.shields.io/npm/v/@jasonhk/noop-package?style=flat-square "Package's Version"
+
+[libraries.io]: https://libraries.io/npm/@jasonhk%2Fnoop-package "Package's Libraries.io Page"
+[libraries.io-dependencies-badge]: https://img.shields.io/librariesio/release/npm/@jasonhk/noop-package?style=flat-square "Package's Sependency Status"
 
 [travis-build]: https://travis-ci.com/JasonHK/node-noop-package "Repository's Travis CI Page"
 [travis-build-badge]: https://img.shields.io/travis/com/JasonHK/node-noop-package?style=flat-square "Repository's Build Status"
